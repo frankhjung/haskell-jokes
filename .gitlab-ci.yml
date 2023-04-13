@@ -1,0 +1,19 @@
+---
+
+stages:
+  - build
+
+build:
+  stage: build
+  except:
+    - tags
+  image: frankhjung/haskell:9.0.2
+  variables:
+    STACK_ROOT: ${CI_PROJECT_DIR}/.stack
+  script:
+    - make clean check build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - .stack/
+      - .stack-work/

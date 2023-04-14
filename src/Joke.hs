@@ -30,8 +30,8 @@ module Joke ( -- Functions
 
 import           Data.Aeson              (FromJSON, Options (..), ToJSON,
                                           defaultOptions, eitherDecode,
-                                          genericToJSON, parseJSON, toJSON,
-                                          withObject, (.:))
+                                          genericParseJSON, genericToJSON,
+                                          parseJSON, toJSON)
 import           Data.Text               (Text)
 import           GHC.Generics            (Generic)
 import           Network.HTTP.Client     (httpLbs, newManager, parseRequest_,
@@ -45,17 +45,9 @@ data JokeResponse = JokeResponse
     , _id        :: Int  -- ^ identifier
     } deriving (Generic, Show, Eq)
 
+-- | Use generic instance to parse JSON.
 instance FromJSON JokeResponse where
-  parseJSON = withObject "JokeResponse" $ \o -> do
-    t <- o .: "type"
-    s <- o .: "setup"
-    p <- o .: "punchline"
-    i <- o .: "id"
-    return JokeResponse { _type = t
-                        , _setup = s
-                        , _punchline = p
-                        , _id = i
-                        }
+  parseJSON = genericParseJSON defaultOptions { fieldLabelModifier = drop 1 }
 
 instance ToJSON JokeResponse where
   toJSON = genericToJSON defaultOptions { fieldLabelModifier = drop 1 }

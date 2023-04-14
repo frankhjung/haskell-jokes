@@ -19,3 +19,4 @@ This is an example program showing how to all an API and parse the JSON response
 - [http-response-either](https://dev.to/csaltos/haskell-http-response-either-4ncg)
 - [http-conduit](https://bitsbybrad.com/2021-02-09-json-api-haskell/)
 - [Data.Aeson](https://hackage.haskell.org/package/aeson-2.0.3.0/docs/Data-Aeson.html)
+- [Aeson Tutorial](https://web.archive.org/web/20201121162141mp_/https://artyom.me/aeson)

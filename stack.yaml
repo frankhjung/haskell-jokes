@@ -8,9 +8,5 @@ extra-deps:
   - bytestring-0.10.12.1
   - http-client-0.7.13.1
   - http-client-tls-0.3.6.1
-  - http-conduit-2.3.8
-  - http-types-0.12.3
   - hspec-2.8.5
-  - hspec-expectations-json-1.0.0.7
   - text-1.2.5.0
-  - utf8-string-1.0.2

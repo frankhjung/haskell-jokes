@@ -14,10 +14,8 @@ module Main ( main
 
 import           Data.Aeson                    (Value (..), eitherDecode,
                                                 encode, object, (.=))
--- import           Data.Aeson.QQ.Simple
 import           Data.ByteString.Lazy.Internal (ByteString (..))
 import           Test.Hspec                    (describe, hspec, it, shouldBe)
--- import           Test.Hspec.Expectations.Json  (shouldBeJson)
 
 import           Joke                          (JokeResponse (..))
 

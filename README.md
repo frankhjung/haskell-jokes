@@ -1,8 +1,8 @@
 # Jokes
 
-Read a Joke from <https://official-joke-api.appspot.com/>.
+Read a Joke from [https://official-joke-api.appspot.com/](https://official-joke-api.appspot.com/).
 
-This is an example program showing how to all an API and parse the JSON response.
+This is an example program showing how to call an API and parse the JSON response.
 
 ```json
 {
@@ -20,3 +20,4 @@ This is an example program showing how to all an API and parse the JSON response
 - [http-conduit](https://bitsbybrad.com/2021-02-09-json-api-haskell/)
 - [Data.Aeson](https://hackage.haskell.org/package/aeson-2.0.3.0/docs/Data-Aeson.html)
 - [Aeson Tutorial](https://web.archive.org/web/20201121162141mp_/https://artyom.me/aeson)
+- [A Cheatsheet to Handle JSON parsing](https://williamyaoh.com/posts/2019-10-19-a-cheatsheet-to-json-handling.html)

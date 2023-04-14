@@ -41,8 +41,11 @@ test:
 
 .PHONY: exec
 exec:
-	@echo exec ...
 	@stack exec -- main
+
+.PHONY: doc
+doc:
+	@stack haddock .
 
 .PHONY: setup
 setup:

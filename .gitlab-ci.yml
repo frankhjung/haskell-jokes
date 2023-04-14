@@ -11,7 +11,7 @@ build:
   variables:
     STACK_ROOT: ${CI_PROJECT_DIR}/.stack
   script:
-    - make clean check build
+    - make clean check build exec
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:

@@ -1,11 +1,7 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE OverloadedStrings  #-}
 
-{-
-
-Print a random joke from <https://official-joke-api.appspot.com/random_joke>.
-
--}
+{- Print a random joke from <https://official-joke-api.appspot.com/random_joke>. -}
 
 module Main (main) where
 

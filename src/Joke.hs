@@ -1,4 +1,3 @@
--- {-# LANGUAGE DeriveAnyClass     #-}
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE OverloadedStrings  #-}
@@ -46,14 +45,19 @@ data JokeResponse = JokeResponse
     } deriving (Generic, Show, Eq)
 
 -- | Use generic instance to parse JSON.
+-- The default instance would parse the fields as @type@, @setup@, @punchline@.
 instance FromJSON JokeResponse where
   parseJSON = genericParseJSON defaultOptions { fieldLabelModifier = drop 1 }
 
+-- | Use generic instance to encode JSON.
+-- The default instance would encode the fields as @type@, @setup@, @punchline@.
 instance ToJSON JokeResponse where
   toJSON = genericToJSON defaultOptions { fieldLabelModifier = drop 1 }
 
--- | Read joke from site.
-getJokeResponse :: IO (Either String JokeResponse)  -- joke response
+-- | Read joke from web site.
+--  The Either type is used for error handling, so we can return error message if
+--  something went wrong.
+getJokeResponse :: IO (Either String JokeResponse)  -- ^ Joke response
 getJokeResponse = do
   let
     url = "https://official-joke-api.appspot.com/random_joke"

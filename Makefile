@@ -10,7 +10,7 @@ default:	check build test
 check:	tags style lint
 
 .PHONY: all
-all:	check build exec
+all:	check build test exec all
 
 .PHONY: tags
 tags:	$(SRC)

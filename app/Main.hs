@@ -14,7 +14,7 @@ main :: IO ()
 main = do
   jokeResponse <- getJokeResponse
   case jokeResponse of
-    Left e  -> print $ "Unable to get joke: " <> e
-    Right j -> do
-      putStrLn $ _setup j
-      putStrLn $ _punchline j
+    Left err  -> print $ "Unable to get joke: " <> err
+    Right joke -> do
+      putStrLn $ _setup joke
+      putStrLn $ _punchline joke

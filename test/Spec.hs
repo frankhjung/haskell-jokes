@@ -2,8 +2,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 {-
-Can encode and decode when ByteString does not contain special characters like
-'°' (ASCII decimal \176).
+Still to do:
+- How to decode when ByteString contains special characters like '°' (ASCII decimal \176).
+- How to decode a list? (e.g. @[JokeResponse]@)
+- How to decode a sequence of names objects? (e.g. @{Name1: JokeResponse, Name2: JokeResponse}@)
 -}
 
 module Main ( main
@@ -19,7 +21,7 @@ import           Test.Hspec                    (describe, hspec, it, shouldBe)
 
 import           Joke                          (JokeResponse (..))
 
--- | An instance of 'Joke'.
+-- | A response from web site of a joke.
 jokeResponse :: JokeResponse
 jokeResponse = JokeResponse { _type = "general"
                             , _setup = "What do you call a pig with three eyes?"
@@ -27,14 +29,14 @@ jokeResponse = JokeResponse { _type = "general"
                             , _id = 216
                             }
 
--- | A JSON string representing a 'Joke'.
+-- | A JSON string representing a 'JokeResponse'.
 jokeString :: ByteString
 jokeString = "{\"type\":\"general\",\
              \\"setup\":\"What do you call a pig with three eyes?\",\
              \\"punchline\":\"Piiig\",\
              \\"id\":216}"
 
--- | Encode a 'Joke' from a Value.
+-- | A Value instance of a 'JokeResponse'.
 jokeValue :: Value
 jokeValue = object [ "type" .= String "general"
                    , "setup" .= String "What do you call a pig with three eyes?"

@@ -14,7 +14,7 @@ build:
     STACK_ROOT: ${CI_PROJECT_DIR}/.stack
   script:
     - make clean check build test doc
-    - mv $(stack path --local-doc-root)/Jokes*/ public/
+    - mv $(stack path --local-install-root)/doc/Jokes*/ public/
     - make exec
 
   artifacts:

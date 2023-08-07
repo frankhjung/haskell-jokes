@@ -1,16 +1,16 @@
 #!/usr/bin/env make
 
-SRC	:= $(wildcard *.hs **/*.hs)
+SRC	:= $(shell git ls-files | grep --perl \.hs)
 YAML	:= $(shell git ls-files | grep --perl \.y?ml)
 
 .PHONY: default
-default:	check build test
+default: check build test
+
+.PHONY: all
+all:	check build test doc exec
 
 .PHONY: check
 check:	tags style lint
-
-.PHONY: all
-all:	check build test exec all
 
 .PHONY: tags
 tags:	$(SRC)
@@ -39,13 +39,14 @@ test:
 	@echo test ...
 	@stack test --fast
 
-.PHONY: exec
-exec:
-	@stack exec -- main
-
 .PHONY: doc
 doc:
-	@stack haddock .
+	@echo doc ...
+	@stack haddock --no-haddock-deps Jokes
+
+.PHONY: exec
+exec:
+	@stack exec -- main -
 
 .PHONY: setup
 setup:
@@ -57,12 +58,8 @@ setup:
 clean:
 	@stack clean
 	@cabal clean
-	@$(RM) tags
-	@$(RM) $(wildcard *.hi **/*.hi)
-	@$(RM) $(wildcard *.o **/*.o)
-	@$(RM) $(wildcard *.prof **/*.prof)
-	@$(RM) $(wildcard *.tix **/*.tix)
 
 .PHONY: cleanall
 cleanall: clean
 	@stack purge
+	@rm -f stack.yaml.lock

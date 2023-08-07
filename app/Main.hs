@@ -8,7 +8,7 @@ module Main (main) where
 import           Data.Text.IO (putStrLn)
 import           Prelude      hiding (putStrLn)
 
-import           Joke         (JokeResponse (..), getJokeResponse)
+import           Jokes        (JokeResponse (..), getJokeResponse)
 
 main :: IO ()
 main = do

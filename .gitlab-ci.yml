@@ -2,18 +2,39 @@
 
 stages:
   - build
+  - deploy
 
 build:
   stage: build
   except:
     - tags
-  image: frankhjung/haskell:9.0.2
+  image: frankhjung/haskell:9.2.8
   variables:
+    RTSOPTS: "+RTS -N1 -s"
     STACK_ROOT: ${CI_PROJECT_DIR}/.stack
   script:
-    - make clean check build exec
+    - make clean check build test doc
+    - mv $(stack path --local-doc-root)/Jokes*/ public/
+    - make exec
+
+  artifacts:
+    paths:
+      - public
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - .stack/
       - .stack-work/
+
+pages:
+  stage: deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  image: alpine:latest
+  script:
+    - echo Publishing documentation ...
+  dependencies:
+    - build
+  artifacts:
+    paths:
+      - public

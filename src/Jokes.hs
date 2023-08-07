@@ -21,11 +21,11 @@ An example of the data returned by the API:
 
 -}
 
-module Joke ( -- Functions
-              getJokeResponse
-              -- | Types
-            , JokeResponse (..)
-            ) where
+module Jokes ( -- Functions
+               getJokeResponse
+               -- | Types
+             , JokeResponse (..)
+             ) where
 
 import           Data.Aeson              (FromJSON, Options (..), ToJSON,
                                           defaultOptions, eitherDecode,

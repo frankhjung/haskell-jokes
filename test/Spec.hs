@@ -19,7 +19,7 @@ import           Data.Aeson                    (Value (..), eitherDecode,
 import           Data.ByteString.Lazy.Internal (ByteString (..))
 import           Test.Hspec                    (describe, hspec, it, shouldBe)
 
-import           Joke                          (JokeResponse (..))
+import           Jokes                         (JokeResponse (..))
 
 -- | A response from web site of a joke.
 jokeResponse :: JokeResponse

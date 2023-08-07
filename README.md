@@ -16,6 +16,11 @@ This is an example program to:
 }
 ```
 
+## Pages
+
+- [GitLab](https://frankhjung1.gitlab.io/haskell-jokes/)
+- [GitHub](https://frankhjung.github.io/haskell-jokes/)
+
 ## Resources
 
 - [HTTP Client](https://github.com/snoyberg/http-client/blob/master/TUTORIAL.md)

@@ -22,9 +22,9 @@ An example of the data returned by the API:
 -}
 
 module Jokes ( -- Functions
-               getJokeResponse
+               getJoke
                -- | Types
-             , JokeResponse (..)
+             , Joke (..)
              ) where
 
 import           Data.Aeson              (FromJSON, Options (..), ToJSON,
@@ -37,7 +37,7 @@ import           Network.HTTP.Client     (httpLbs, newManager, parseRequest_,
                                           responseBody)
 import           Network.HTTP.Client.TLS (tlsManagerSettings)
 
-data JokeResponse = JokeResponse
+data Joke = Joke
     { _type      :: Text -- ^ type of joke
     , _setup     :: Text -- ^ setup the joke
     , _punchline :: Text -- ^ punchline
@@ -46,22 +46,20 @@ data JokeResponse = JokeResponse
 
 -- | Use generic instance to parse JSON.
 -- The default instance would parse the fields as @type@, @setup@, @punchline@.
-instance FromJSON JokeResponse where
+instance FromJSON Joke where
   parseJSON = genericParseJSON defaultOptions { fieldLabelModifier = drop 1 }
 
 -- | Use generic instance to encode JSON.
 -- The default instance would encode the fields as @type@, @setup@, @punchline@.
-instance ToJSON JokeResponse where
+instance ToJSON Joke where
   toJSON = genericToJSON defaultOptions { fieldLabelModifier = drop 1 }
 
 -- | Read joke from web site.
 --  The Either type is used for error handling, so we can return error message if
 --  something went wrong.
-getJokeResponse :: IO (Either String JokeResponse)  -- ^ Joke response
-getJokeResponse = do
-  let
-    url = "https://official-joke-api.appspot.com/random_joke"
-    request = parseRequest_ url
+getJoke :: IO (Either String Joke)  -- ^ Joke response
+getJoke = do
+  let url = "https://official-joke-api.appspot.com/random_joke"
   manager <- newManager tlsManagerSettings
-  response <- httpLbs request manager
+  response <- httpLbs (parseRequest_ url) manager
   return $ eitherDecode $ responseBody response

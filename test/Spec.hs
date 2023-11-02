@@ -4,12 +4,12 @@
 {-
 Still to do:
 - How to decode when ByteString contains special characters like '°' (ASCII decimal \176).
-- How to decode a list? (e.g. @[JokeResponse]@)
-- How to decode a sequence of names objects? (e.g. @{Name1: JokeResponse, Name2: JokeResponse}@)
+- How to decode a list? (e.g. @[Joke]@)
+- How to decode a sequence of names objects? (e.g. @{Name1: Joke, Name2: Joke}@)
 -}
 
 module Main ( main
-            , jokeResponse
+            , Joke
             , jokeString
             , jokeValue
             ) where
@@ -19,24 +19,24 @@ import           Data.Aeson                    (Value (..), eitherDecode,
 import           Data.ByteString.Lazy.Internal (ByteString (..))
 import           Test.Hspec                    (describe, hspec, it, shouldBe)
 
-import           Jokes                         (JokeResponse (..))
+import           Jokes                         (Joke (..))
 
 -- | A response from web site of a joke.
-jokeResponse :: JokeResponse
-jokeResponse = JokeResponse { _type = "general"
-                            , _setup = "What do you call a pig with three eyes?"
-                            , _punchline = "Piiig"
-                            , _id = 216
-                            }
+joke :: Joke
+joke = Joke { _type = "general"
+            , _setup = "What do you call a pig with three eyes?"
+            , _punchline = "Piiig"
+            , _id = 216
+            }
 
--- | A JSON string representing a 'JokeResponse'.
+-- | A JSON string representing a 'Joke'.
 jokeString :: ByteString
 jokeString = "{\"type\":\"general\",\
              \\"setup\":\"What do you call a pig with three eyes?\",\
              \\"punchline\":\"Piiig\",\
              \\"id\":216}"
 
--- | A Value instance of a 'JokeResponse'.
+-- | A Value instance of a 'Joke'.
 jokeValue :: Value
 jokeValue = object [ "type" .= String "general"
                    , "setup" .= String "What do you call a pig with three eyes?"
@@ -48,8 +48,8 @@ jokeValue = object [ "type" .= String "general"
 main :: IO ()
 main = hspec $ do
   describe "test decode joke" $
-    it "returns an instance of JokeResponse" $
-      eitherDecode jokeString `shouldBe` Right jokeResponse
+    it "returns an instance of Joke" $
+      eitherDecode jokeString `shouldBe` Right joke
   describe "test encode joke from Value" $
     it "returns a JSON string" $
-      encode jokeValue `shouldBe` encode jokeResponse
+      encode jokeValue `shouldBe` encode joke

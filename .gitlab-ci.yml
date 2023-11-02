@@ -8,23 +8,20 @@ build:
   stage: build
   except:
     - tags
-  image: frankhjung/haskell:9.2.8
+  image: frankhjung/haskell:9.4.7
   variables:
-    RTSOPTS: "+RTS -N1 -s"
-    STACK_ROOT: ${CI_PROJECT_DIR}/.stack
+    RTSOPTS: +RTS -N1 -s
+    STACK_ROOT: ${CI_PROJECT_DIR}/.stack-work
   script:
-    - make clean check build test doc
-    - mv $(stack path --local-install-root)/doc/Jokes*/ public/
-    - make exec
-
+    - make clean check build test doc exec
+    - mv $(stack path --local-doc-root)/ public/
   artifacts:
     paths:
       - public
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: ${CI_COMMIT_REF_NAME}
     paths:
-      - .stack/
-      - .stack-work/
+      - ${STACK_ROOT}
 
 pages:
   stage: deploy

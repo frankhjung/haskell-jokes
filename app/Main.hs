@@ -8,13 +8,10 @@ module Main (main) where
 import           Data.Text.IO (putStrLn)
 import           Prelude      hiding (putStrLn)
 
-import           Jokes        (JokeResponse (..), getJokeResponse)
+import           Jokes        (Joke (..), getJoke)
+
+tellJoke :: Joke -> IO ()
+tellJoke joke = putStrLn (_setup joke) >> putStrLn (_punchline joke)
 
 main :: IO ()
-main = do
-  jokeResponse <- getJokeResponse
-  case jokeResponse of
-    Left err  -> print $ "Unable to get joke: " <> err
-    Right joke -> do
-      putStrLn $ _setup joke
-      putStrLn $ _punchline joke
+main = getJoke >>= either (print . ("Unable to get joke: " <>)) tellJoke

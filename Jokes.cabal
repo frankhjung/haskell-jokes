@@ -1,8 +1,9 @@
-cabal-version:      3.0
-
+cabal-version:      2.4
 name:               Jokes
-version:            0.2.0
-description:        See README on GitLab at <https://github.com/frankhjung/haskell-jokes#readme>
+version:            0.3.0
+description:
+  See README on GitLab at <https://github.com/frankhjung/haskell-jokes#readme>
+
 synopsis:           example https request to read from jokes api
 homepage:           https://github.com/frankhjung/haskell-jokes#readme
 bug-reports:        https://github.com/frankhjung/haskell-jokes/issues
@@ -14,48 +15,52 @@ license-file:       LICENSE
 category:           education
 extra-source-files: README.md
 
-source-repository   head
-  type:             git
-  location:         https://github.com/frankhjung/haskell-jokes
+source-repository head
+  type:     git
+  location: https://github.com/frankhjung/haskell-jokes
 
 library
   default-language: Haskell2010
   hs-source-dirs:   src
   exposed-modules:  Jokes
-  build-depends:    base >= 4 && < 5
-                  , aeson
-                  , bytestring
-                  , http-client
-                  , http-client-tls
-                  , text
+  build-depends:
+    , aeson
+    , base             ^>=4.17
+    , bytestring
+    , http-client
+    , http-client-tls
+    , text
+
   ghc-options:      -Wall
 
-executable          main
-  hs-source-dirs:   app
-                  , src
+executable main
+  hs-source-dirs:   app src
   main-is:          Main.hs
   default-language: Haskell2010
-  build-depends:    base
-                  , aeson
-                  , bytestring
-                  , http-client
-                  , http-client-tls
-                  , text
+  build-depends:
+    , aeson
+    , base
+    , bytestring
+    , http-client
+    , http-client-tls
+    , text
+
   other-modules:    Jokes
   ghc-options:      -Wall
 
-test-suite          test
-  hs-source-dirs:   test
-                  , src
+test-suite test
+  hs-source-dirs:   test src
   main-is:          Spec.hs
   default-language: Haskell2010
   type:             exitcode-stdio-1.0
-  build-depends:    base
-                  , aeson
-                  , bytestring
-                  , hspec
-                  , http-client
-                  , http-client-tls
-                  , text
+  build-depends:
+    , aeson
+    , base
+    , bytestring
+    , hspec
+    , http-client
+    , http-client-tls
+    , text
+
   other-modules:    Jokes
   ghc-options:      -Wall

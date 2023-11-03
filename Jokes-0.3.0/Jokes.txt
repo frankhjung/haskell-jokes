@@ -13,23 +13,23 @@ module Jokes
 
 -- | Read joke from web site. The Either type is used for error handling,
 --   so we can return error message if something went wrong.
-getJokeResponse :: IO (Either String JokeResponse)
-data JokeResponse
-JokeResponse :: Text -> Text -> Text -> Int -> JokeResponse
+getJoke :: IO (Either String Joke)
+data Joke
+Joke :: Text -> Text -> Text -> Int -> Joke
 
 -- | type of joke
-[_type] :: JokeResponse -> Text
+[_type] :: Joke -> Text
 
 -- | setup the joke
-[_setup] :: JokeResponse -> Text
+[_setup] :: Joke -> Text
 
 -- | punchline
-[_punchline] :: JokeResponse -> Text
+[_punchline] :: Joke -> Text
 
 -- | identifier
-[_id] :: JokeResponse -> Int
-instance GHC.Classes.Eq Jokes.JokeResponse
-instance GHC.Show.Show Jokes.JokeResponse
-instance GHC.Generics.Generic Jokes.JokeResponse
-instance Data.Aeson.Types.FromJSON.FromJSON Jokes.JokeResponse
-instance Data.Aeson.Types.ToJSON.ToJSON Jokes.JokeResponse
+[_id] :: Joke -> Int
+instance GHC.Classes.Eq Jokes.Joke
+instance GHC.Show.Show Jokes.Joke
+instance GHC.Generics.Generic Jokes.Joke
+instance Data.Aeson.Types.FromJSON.FromJSON Jokes.Joke
+instance Data.Aeson.Types.ToJSON.ToJSON Jokes.Joke

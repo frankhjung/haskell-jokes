@@ -1,6 +1,6 @@
 cabal-version:      2.4
 name:               Jokes
-version:            0.3.0
+version:            0.3.1
 description:
   See README on GitLab at <https://github.com/frankhjung/haskell-jokes#readme>
 

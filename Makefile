@@ -7,7 +7,7 @@ TARGET	:= Jokes
 YAML	:= $(shell git ls-files | grep --perl \.y?ml)
 
 .PHONY: default
-default: format check build test
+default: format check build test exec
 
 .PHONY: all
 all:	format check build test doc exec

@@ -19,7 +19,7 @@ import           Data.Aeson                    (Value (..), eitherDecode,
 import           Data.ByteString.Lazy.Internal (ByteString (..))
 import           Test.Hspec                    (describe, hspec, it, shouldBe)
 
-import           Jokes                         (Joke (..))
+import           Jokes                         (Joke (..), tellJoke)
 
 -- | A response from web site of a joke.
 joke :: Joke
@@ -53,3 +53,6 @@ main = hspec $ do
   describe "test encode joke from Value" $
     it "returns a JSON string" $
       encode jokeValue `shouldBe` encode joke
+  describe "test tell joke" $
+    it "returns the setup and punchline of joke" $
+      tellJoke joke `shouldBe` "What do you call a pig with three eyes?\nPiiig\n"

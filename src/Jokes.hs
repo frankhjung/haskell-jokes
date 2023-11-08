@@ -21,8 +21,9 @@ An example of the data returned by the API:
 
 -}
 
-module Jokes ( -- Functions
+module Jokes ( -- | Functions
                getJoke
+             , tellJoke
                -- | Types
              , Joke (..)
              ) where
@@ -31,12 +32,14 @@ import           Data.Aeson              (FromJSON, Options (..), ToJSON,
                                           defaultOptions, eitherDecode,
                                           genericParseJSON, genericToJSON,
                                           parseJSON, toJSON)
-import           Data.Text               (Text)
+import           Data.Text               (Text, unlines, unpack)
 import           GHC.Generics            (Generic)
 import           Network.HTTP.Client     (httpLbs, newManager, parseRequest_,
                                           responseBody)
 import           Network.HTTP.Client.TLS (tlsManagerSettings)
+import           Prelude                 hiding (unlines)
 
+-- | A response from the joke web site.
 data Joke = Joke
     { _type      :: Text -- ^ type of joke
     , _setup     :: Text -- ^ setup the joke
@@ -57,9 +60,14 @@ instance ToJSON Joke where
 -- | Read joke from web site.
 --  The Either type is used for error handling, so we can return error message if
 --  something went wrong.
-getJoke :: IO (Either String Joke)  -- ^ Joke response
+getJoke :: IO (Either String Joke)  -- ^ Joke response or error message
 getJoke = do
   let url = "https://official-joke-api.appspot.com/random_joke"
   manager <- newManager tlsManagerSettings
   response <- httpLbs (parseRequest_ url) manager
   return $ eitherDecode $ responseBody response
+
+-- | Print the setup and punchline of a joke.
+tellJoke :: Joke          -- ^ `Joke`
+            -> String     -- ^ formatted joke as setup and punchline
+tellJoke = unpack . unlines . sequence [_setup, _punchline]

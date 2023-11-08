@@ -5,13 +5,12 @@
 
 module Main (main) where
 
-import           Data.Text.IO (putStrLn)
-import           Prelude      hiding (putStrLn)
+import           Jokes (getJoke, tellJoke)
 
-import           Jokes        (Joke (..), getJoke)
+-- | Print the error message from a failed `getJoke` response.
+printError :: String -> String
+printError = ("Unable to get joke: " <>)
 
-tellJoke :: Joke -> IO ()
-tellJoke joke = putStrLn (_setup joke) >> putStrLn (_punchline joke)
-
+-- | Print a random joke.
 main :: IO ()
-main = getJoke >>= either (print . ("Unable to get joke: " <>)) tellJoke
+main = putStrLn . either printError tellJoke =<< getJoke

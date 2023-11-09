@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# LANGUAGE DeriveGeneric      #-}</span><span>
+</span><span id="line-2"></span><span class="hs-pragma">{-# LANGUAGE DerivingStrategies #-}</span><span>
+</span><span id="line-3"></span><span class="hs-pragma">{-# LANGUAGE OverloadedStrings  #-}</span><span>
+</span><span id="line-4"></span><span>
+</span><span id="line-5"></span><span class="hs-comment">{-
+
+Get a random joke from &lt;https://official-joke-api.appspot.com/random_joke&gt;.
+
+== Example
+
+An example of the data returned by the API:
+
+@
+{
+  &quot;type&quot;: &quot;general&quot;,
+  &quot;setup&quot;: &quot;What do you call a pig with three eyes?&quot;,
+  &quot;punchline&quot;: &quot;Piiig&quot;,
+  &quot;id&quot;: 216
+}
+@
+
+-}</span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Jokes</span><span> </span><span class="hs-special">(</span><span> </span><span class="hs-comment">-- Functions</span><span>
+</span><span id="line-25"></span><span>               </span><span class="annot"><a href="Jokes.html#getJoke"><span class="hs-identifier">getJoke</span></a></span><span>
+</span><span id="line-26"></span><span>             </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Jokes.html#tellJoke"><span class="hs-identifier">tellJoke</span></a></span><span>
+</span><span id="line-27"></span><span>               </span><span class="annot"><span class="hs-comment">-- | Types</span></span><span>
+</span><span id="line-28"></span><span>             </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier">Joke</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-29"></span><span>             </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Aeson</span></span><span>              </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">FromJSON</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">Options</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">ToJSON</span></span><span class="hs-special">,</span><span>
+</span><span id="line-32"></span><span>                                          </span><span class="annot"><span class="hs-identifier">defaultOptions</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">eitherDecode</span></span><span class="hs-special">,</span><span>
+</span><span id="line-33"></span><span>                                          </span><span class="annot"><span class="hs-identifier">genericParseJSON</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">genericToJSON</span></span><span class="hs-special">,</span><span>
+</span><span id="line-34"></span><span>                                          </span><span class="annot"><span class="hs-identifier">parseJSON</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">toJSON</span></span><span class="hs-special">)</span><span>
+</span><span id="line-35"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.List</span></span><span>               </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">intercalate</span></span><span class="hs-special">)</span><span>
+</span><span id="line-36"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Data.Text</span></span><span>               </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">Text</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">unpack</span></span><span class="hs-special">)</span><span>
+</span><span id="line-37"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">GHC.Generics</span></span><span>            </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">Generic</span></span><span class="hs-special">)</span><span>
+</span><span id="line-38"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.HTTP.Client</span></span><span>     </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">httpLbs</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">newManager</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">parseRequest_</span></span><span class="hs-special">,</span><span>
+</span><span id="line-39"></span><span>                                          </span><span class="annot"><span class="hs-identifier">responseBody</span></span><span class="hs-special">)</span><span>
+</span><span id="line-40"></span><span class="hs-keyword">import</span><span>           </span><span class="annot"><span class="hs-identifier">Network.HTTP.Client.TLS</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">tlsManagerSettings</span></span><span class="hs-special">)</span><span>
+</span><span id="line-41"></span><span>
+</span><span id="line-42"></span><span class="hs-keyword">data</span><span> </span><span id="Joke"><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier hs-var">Joke</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Joke"><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier hs-var">Joke</span></a></span></span><span>
+</span><span id="line-43"></span><span>    </span><span class="hs-special">{</span><span> </span><span id="_type"><span class="annot"><span class="annottext">Joke -&gt; Text
+</span><a href="Jokes.html#_type"><span class="hs-identifier hs-var hs-var">_type</span></a></span></span><span>      </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><span class="hs-comment">-- ^ type of joke</span></span><span>
+</span><span id="line-44"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="_setup"><span class="annot"><span class="annottext">Joke -&gt; Text
+</span><a href="Jokes.html#_setup"><span class="hs-identifier hs-var hs-var">_setup</span></a></span></span><span>     </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><span class="hs-comment">-- ^ setup the joke</span></span><span>
+</span><span id="line-45"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="_punchline"><span class="annot"><span class="annottext">Joke -&gt; Text
+</span><a href="Jokes.html#_punchline"><span class="hs-identifier hs-var hs-var">_punchline</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="annot"><span class="hs-comment">-- ^ punchline</span></span><span>
+</span><span id="line-46"></span><span>    </span><span class="hs-special">,</span><span> </span><span id="_id"><span class="annot"><span class="annottext">Joke -&gt; Int
+</span><a href="Jokes.html#_id"><span class="hs-identifier hs-var hs-var">_id</span></a></span></span><span>        </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>  </span><span class="annot"><span class="hs-comment">-- ^ identifier</span></span><span>
+</span><span id="line-47"></span><span>    </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679100642"><span id="local-6989586621679100644"><span class="annot"><span class="annottext">(forall x. Joke -&gt; Rep Joke x)
+-&gt; (forall x. Rep Joke x -&gt; Joke) -&gt; Generic Joke
+forall x. Rep Joke x -&gt; Joke
+forall x. Joke -&gt; Rep Joke x
+forall a.
+(forall x. a -&gt; Rep a x) -&gt; (forall x. Rep a x -&gt; a) -&gt; Generic a
+$cfrom :: forall x. Joke -&gt; Rep Joke x
+from :: forall x. Joke -&gt; Rep Joke x
+$cto :: forall x. Rep Joke x -&gt; Joke
+to :: forall x. Rep Joke x -&gt; Joke
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Generic</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679100648"><span id="local-6989586621679100658"><span id="local-6989586621679100662"><span class="annot"><span class="annottext">Int -&gt; Joke -&gt; ShowS
+[Joke] -&gt; ShowS
+Joke -&gt; [Char]
+(Int -&gt; Joke -&gt; ShowS)
+-&gt; (Joke -&gt; [Char]) -&gt; ([Joke] -&gt; ShowS) -&gt; Show Joke
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; [Char]) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+$cshowsPrec :: Int -&gt; Joke -&gt; ShowS
+showsPrec :: Int -&gt; Joke -&gt; ShowS
+$cshow :: Joke -&gt; [Char]
+show :: Joke -&gt; [Char]
+$cshowList :: [Joke] -&gt; ShowS
+showList :: [Joke] -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679100666"><span id="local-6989586621679100674"><span class="annot"><span class="annottext">Joke -&gt; Joke -&gt; Bool
+(Joke -&gt; Joke -&gt; Bool) -&gt; (Joke -&gt; Joke -&gt; Bool) -&gt; Eq Joke
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+$c== :: Joke -&gt; Joke -&gt; Bool
+== :: Joke -&gt; Joke -&gt; Bool
+$c/= :: Joke -&gt; Joke -&gt; Bool
+/= :: Joke -&gt; Joke -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-48"></span><span>
+</span><span id="line-49"></span><span class="hs-comment">-- | Use generic instance to parse JSON.</span><span>
+</span><span id="line-50"></span><span class="hs-comment">-- The default instance would parse the fields as @type@, @setup@, @punchline@.</span><span>
+</span><span id="line-51"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679100680"><span class="annot"><span class="hs-identifier hs-type">FromJSON</span></span><span> </span><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier hs-type">Joke</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-52"></span><span>  </span><span id="local-6989586621679100786"><span class="annot"><span class="annottext">parseJSON :: Value -&gt; Parser Joke
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">parseJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Options -&gt; Value -&gt; Parser Joke
+forall a.
+(Generic a, GFromJSON Zero (Rep a)) =&gt;
+Options -&gt; Value -&gt; Parser a
+</span><span class="hs-identifier hs-var">genericParseJSON</span></span><span> </span><span class="annot"><span class="annottext">Options
+</span><span class="hs-identifier hs-var">defaultOptions</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">fieldLabelModifier :: ShowS
+</span><a href="#local-6989586621679100787"><span class="hs-identifier hs-var">fieldLabelModifier</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ShowS
+forall a. Int -&gt; [a] -&gt; [a]
+</span><span class="hs-identifier hs-var">drop</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-53"></span><span>
+</span><span id="line-54"></span><span class="hs-comment">-- | Use generic instance to encode JSON.</span><span>
+</span><span id="line-55"></span><span class="hs-comment">-- The default instance would encode the fields as @type@, @setup@, @punchline@.</span><span>
+</span><span id="line-56"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679100791"><span id="local-6989586621679100795"><span id="local-6989586621679100798"><span class="annot"><span class="hs-identifier hs-type">ToJSON</span></span><span> </span><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier hs-type">Joke</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-57"></span><span>  </span><span id="local-6989586621679100915"><span class="annot"><span class="annottext">toJSON :: Joke -&gt; Value
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">toJSON</span></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Options -&gt; Joke -&gt; Value
+forall a.
+(Generic a, GToJSON' Value Zero (Rep a)) =&gt;
+Options -&gt; a -&gt; Value
+</span><span class="hs-identifier hs-var">genericToJSON</span></span><span> </span><span class="annot"><span class="annottext">Options
+</span><span class="hs-identifier hs-var">defaultOptions</span></span><span> </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">fieldLabelModifier :: ShowS
+</span><a href="#local-6989586621679100787"><span class="hs-identifier hs-var">fieldLabelModifier</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ShowS
+forall a. Int -&gt; [a] -&gt; [a]
+</span><span class="hs-identifier hs-var">drop</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="hs-special">}</span><span>
+</span><span id="line-58"></span><span>
+</span><span id="line-59"></span><span class="hs-comment">-- | Read joke from web site.</span><span>
+</span><span id="line-60"></span><span class="hs-comment">--  The Either type is used for error handling, so we can return error message if</span><span>
+</span><span id="line-61"></span><span class="hs-comment">--  something went wrong.</span><span>
+</span><span id="line-62"></span><span class="annot"><a href="Jokes.html#getJoke"><span class="hs-identifier hs-type">getJoke</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Either</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier hs-type">Joke</span></a></span><span class="hs-special">)</span><span>  </span><span class="annot"><span class="hs-comment">-- ^ Joke response</span></span><span>
+</span><span id="line-63"></span><span id="getJoke"><span class="annot"><span class="annottext">getJoke :: IO (Either [Char] Joke)
+</span><a href="Jokes.html#getJoke"><span class="hs-identifier hs-var hs-var">getJoke</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-64"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679100917"><span class="annot"><span class="annottext">url :: [Char]
+</span><a href="#local-6989586621679100917"><span class="hs-identifier hs-var hs-var">url</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Char]
+</span><span class="hs-string">&quot;https://official-joke-api.appspot.com/random_joke&quot;</span></span><span>
+</span><span id="line-65"></span><span>  </span><span id="local-6989586621679100918"><span class="annot"><span class="annottext">Manager
+</span><a href="#local-6989586621679100918"><span class="hs-identifier hs-var">manager</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ManagerSettings -&gt; IO Manager
+</span><span class="hs-identifier hs-var">newManager</span></span><span> </span><span class="annot"><span class="annottext">ManagerSettings
+</span><span class="hs-identifier hs-var">tlsManagerSettings</span></span><span>
+</span><span id="line-66"></span><span>  </span><span id="local-6989586621679100919"><span class="annot"><span class="annottext">Response ByteString
+</span><a href="#local-6989586621679100919"><span class="hs-identifier hs-var">response</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Request -&gt; Manager -&gt; IO (Response ByteString)
+</span><span class="hs-identifier hs-var">httpLbs</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[Char] -&gt; Request
+</span><span class="hs-identifier hs-var">parseRequest_</span></span><span> </span><span class="annot"><span class="annottext">[Char]
+</span><a href="#local-6989586621679100917"><span class="hs-identifier hs-var">url</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Manager
+</span><a href="#local-6989586621679100918"><span class="hs-identifier hs-var">manager</span></a></span><span>
+</span><span id="line-67"></span><span>  </span><span class="annot"><span class="annottext">Either [Char] Joke -&gt; IO (Either [Char] Joke)
+forall a. a -&gt; IO a
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Either [Char] Joke -&gt; IO (Either [Char] Joke))
+-&gt; Either [Char] Joke -&gt; IO (Either [Char] Joke)
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either [Char] Joke
+forall a. FromJSON a =&gt; ByteString -&gt; Either [Char] a
+</span><span class="hs-identifier hs-var">eitherDecode</span></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; Either [Char] Joke)
+-&gt; ByteString -&gt; Either [Char] Joke
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Response ByteString -&gt; ByteString
+forall body. Response body -&gt; body
+</span><span class="hs-identifier hs-var">responseBody</span></span><span> </span><span class="annot"><span class="annottext">Response ByteString
+</span><a href="#local-6989586621679100919"><span class="hs-identifier hs-var">response</span></a></span><span>
+</span><span id="line-68"></span><span>
+</span><span id="line-69"></span><span class="annot"><span class="hs-comment">-- | Print the setup and punchline of a joke.</span></span><span>
+</span><span id="line-70"></span><span class="annot"><a href="Jokes.html#tellJoke"><span class="hs-identifier hs-type">tellJoke</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Jokes.html#Joke"><span class="hs-identifier hs-type">Joke</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-71"></span><span id="tellJoke"><span class="annot"><span class="annottext">tellJoke :: Joke -&gt; [Char]
+</span><a href="Jokes.html#tellJoke"><span class="hs-identifier hs-var hs-var">tellJoke</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Char] -&gt; [[Char]] -&gt; [Char]
+forall a. [a] -&gt; [[a]] -&gt; [a]
+</span><span class="hs-identifier hs-var">intercalate</span></span><span> </span><span class="annot"><span class="annottext">[Char]
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">([[Char]] -&gt; [Char]) -&gt; (Joke -&gt; [[Char]]) -&gt; Joke -&gt; [Char]
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; [Char]) -&gt; [Text] -&gt; [[Char]]
+forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; [Char]
+</span><span class="hs-identifier hs-var">unpack</span></span><span> </span><span class="annot"><span class="annottext">([Text] -&gt; [[Char]]) -&gt; (Joke -&gt; [Text]) -&gt; Joke -&gt; [[Char]]
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">[Joke -&gt; Text] -&gt; Joke -&gt; [Text]
+forall (t :: * -&gt; *) (m :: * -&gt; *) a.
+(Traversable t, Monad m) =&gt;
+t (m a) -&gt; m (t a)
+forall (m :: * -&gt; *) a. Monad m =&gt; [m a] -&gt; m [a]
+</span><span class="hs-identifier hs-var">sequence</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Joke -&gt; Text
+</span><a href="Jokes.html#_setup"><span class="hs-identifier hs-var">_setup</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Joke -&gt; Text
+</span><a href="Jokes.html#_punchline"><span class="hs-identifier hs-var">_punchline</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-72"></span></pre></body></html>

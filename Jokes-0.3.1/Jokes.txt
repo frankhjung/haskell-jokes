@@ -22,16 +22,16 @@ tellJoke :: Joke -> String
 data Joke
 Joke :: Text -> Text -> Text -> Int -> Joke
 
--- | type of joke
+-- | Type of joke
 [_type] :: Joke -> Text
 
--- | setup the joke
+-- | Setup the joke
 [_setup] :: Joke -> Text
 
--- | punchline
+-- | Punchline
 [_punchline] :: Joke -> Text
 
--- | identifier
+-- | Identifier
 [_id] :: Joke -> Int
 instance GHC.Classes.Eq Jokes.Joke
 instance GHC.Show.Show Jokes.Joke

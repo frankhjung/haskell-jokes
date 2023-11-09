@@ -17,6 +17,8 @@ getJoke :: IO (Either String Joke)
 
 -- | Print the setup and punchline of a joke.
 tellJoke :: Joke -> String
+
+-- | A response from the joke web site.
 data Joke
 Joke :: Text -> Text -> Text -> Int -> Joke
 

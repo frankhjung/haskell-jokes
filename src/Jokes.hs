@@ -2,7 +2,12 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE OverloadedStrings  #-}
 
-{-
+{-|
+
+Module      : Jokes
+Description : Get a random joke using API
+Copyright   : © Frank Jung, 2023-2024
+License     : GPL-3.0-only
 
 Get a random joke from <https://official-joke-api.appspot.com/random_joke>.
 

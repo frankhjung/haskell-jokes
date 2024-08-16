@@ -2,22 +2,26 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 {-
+
+Module      : JokesSpec
+Description : Test the Jokes module
+Copyright   : © Frank Jung, 2023-2024
+License     : GPL-3.0-only
+
 Still to do:
+
 - How to decode when ByteString contains special characters like '°' (ASCII decimal \176).
 - How to decode a list? (e.g. @[Joke]@)
 - How to decode a sequence of names objects? (e.g. @{Name1: Joke, Name2: Joke}@)
+
 -}
 
-module Main ( main
-            , Joke
-            , jokeString
-            , jokeValue
-            ) where
+module JokesSpec ( spec ) where
 
 import           Data.Aeson                    (Value (..), eitherDecode,
                                                 encode, object, (.=))
 import           Data.ByteString.Lazy.Internal (ByteString (..))
-import           Test.Hspec                    (describe, hspec, it, shouldBe)
+import           Test.Hspec                    (Spec, describe, it, shouldBe)
 
 import           Jokes                         (Joke (..), tellJoke)
 
@@ -45,8 +49,8 @@ jokeValue = object [ "type" .= String "general"
                    ]
 
 -- | Unit Tests
-main :: IO ()
-main = hspec $ do
+spec :: Spec
+spec = do
   describe "test decode joke" $
     it "returns an instance of Joke" $
       eitherDecode jokeString `shouldBe` Right joke

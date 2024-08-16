@@ -16,6 +16,20 @@ This is an example program to:
 }
 ```
 
+## Build
+
+See the [Makefile](Makefile) for details on how to build the project using
+[Cabal](https://www.haskell.org/cabal/).
+
+A typical build would look like this:
+
+```bash
+make
+```
+
+This will run the `default` dummy target in the Makefile which will run the
+following targets: `format`, `check`, `build,` `test` and `exec`.
+
 ## Pages
 
 - [GitLab](https://frankhjung1.gitlab.io/haskell-jokes/)

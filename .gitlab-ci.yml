@@ -8,20 +8,28 @@ build:
   stage: build
   except:
     - tags
-  image: frankhjung/haskell:9.4.7
+  image:
+    name: frankhjung/haskell:${GHC_VERSION}
   variables:
-    RTSOPTS: +RTS -N1 -s
-    STACK_ROOT: ${CI_PROJECT_DIR}/.stack-work
+    GHC_VERSION: 9.4.8
+    PROJECT: Jokes
+    CABAL_DIR: ${CI_PROJECT_DIR}/.cabal
+    CABAL_CONFIG: ${CABAL_DIR}/config
+    DOC_DIR: dist-newstyle/build/x86_64-linux/ghc-${GHC_VERSION}/${PROJECT}-*/doc/html/${PROJECT}/
   script:
-    - make clean check build test doc exec
-    - mv $(stack path --local-doc-root)/ public/
+    - make setup
+    - make check
+    - make build
+    - make doc
+    - mv ${DOC_DIR} public
+    - make test
   artifacts:
     paths:
       - public
   cache:
     key: ${CI_COMMIT_REF_NAME}
     paths:
-      - ${STACK_ROOT}
+      - ${CABAL_DIR}
 
 pages:
   stage: deploy
@@ -29,7 +37,7 @@ pages:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image: alpine:latest
   script:
-    - echo Publishing documentation ...
+    - echo Publish pages ...
   dependencies:
     - build
   artifacts:

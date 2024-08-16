@@ -2,73 +2,68 @@
 
 .DEFAULT_GOAL := default
 
-SRC	:= $(wildcard */*.hs)
-TARGET	:= Jokes
-YAML	:= $(shell git ls-files | grep --perl \.y?ml)
+CABAL	:= Jokes.cabal
+SRCS	:= $(wildcard */*.hs)
 
 .PHONY: default
 default: format check build test exec
 
 .PHONY: all
-all:	format check build test doc exec
+all:	setup format check build test doc exec
 
 .PHONY: format
-format:	$(SRC)
+format:	$(SRCS)
 	@echo format ...
-	@cabal-fmt --inplace $(TARGET).cabal
-	@stylish-haskell --verbose --inplace $(SRC)
+	@cabal-fmt --inplace $(CABAL)
+	@stylish-haskell --inplace $(SRCS)
 
 .PHONY: check
 check:	tags lint
 
 .PHONY: tags
-tags:	$(SRC)
+tags:	$(SRCS)
 	@echo tags ...
-	@hasktags --ctags --extendedctag $(SRC)
+	@hasktags --ctags --extendedctag $(SRCS)
 
 .PHONY: lint
-lint:	$(SRC)
+lint:	$(SRCS)
 	@echo lint ...
-	@cabal check --verbose
-	@hlint --cross --color --show $(SRC)
-	@yamllint --strict $(YAML)
+	@hlint --cross --color --show $(SRCS)
+	@cabal check
 
 .PHONY: build
-build:
+build:  $(SRCS)
 	@echo build ...
-	@stack build --pedantic --no-test
+	@cabal build
 
 .PHONY: test
 test:
 	@echo test ...
-	@stack test --fast
+	@cabal test --test-show-details=direct
 
 .PHONY: doc
 doc:
 	@echo doc ...
-	@stack haddock
+	@cabal haddock --haddock-quickjump --haddock-hyperlink-source
 
 .PHONY: exec
 exec:
-	@stack exec -- main
+	@cabal run main
 
 .PHONY: setup
 setup:
-	stack update
-	stack path
-	stack query
-	stack ls dependencies
-
-.PHONY: ghci
-ghci:
-	@stack ghci --ghci-options -Wno-type-defaults
+	-touch -d "2023-04-12T000:00:00UTC" LICENSE
+ifeq (,$(wildcard ${CABAL_CONFIG}))
+	-cabal user-config init
+	-cabal update --only-dependencies
+else
+	@echo Using user-config from ${CABAL_CONFIG} ...
+endif
 
 .PHONY: clean
 clean:
-	@stack clean
 	@cabal clean
 
-.PHONY: cleanall
-cleanall: clean
-	@stack purge
-	@rm -f tags
+.PHONY: distclean
+distclean: clean
+	@$(RM) tags

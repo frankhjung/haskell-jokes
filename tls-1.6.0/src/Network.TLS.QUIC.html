@@ -181,44 +181,44 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-156"></span><span>
 </span><span id="line-157"></span><span class="annot"><a href="Network.TLS.QUIC.html#getTxLevel"><span class="hs-identifier hs-type">getTxLevel</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Network.TLS.Context.Internal.html#Context"><span class="hs-identifier hs-type">Context</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="Network.TLS.Record.State.html#CryptLevel"><span class="hs-identifier hs-type">CryptLevel</span></a></span><span>
 </span><span id="line-158"></span><span id="getTxLevel"><span class="annot"><span class="annottext">getTxLevel :: Context -&gt; IO CryptLevel
-</span><a href="Network.TLS.QUIC.html#getTxLevel"><span class="hs-identifier hs-var hs-var">getTxLevel</span></a></span></span><span> </span><span id="local-6989586621679191159"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191159"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Network.TLS.QUIC.html#getTxLevel"><span class="hs-identifier hs-var hs-var">getTxLevel</span></a></span></span><span> </span><span id="local-6989586621679191228"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191228"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-159"></span><span>    </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Hash
 </span><span class="hs-identifier">_</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Cipher
-</span><span class="hs-identifier">_</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679191160"><span class="annot"><span class="annottext">CryptLevel
-</span><a href="#local-6989586621679191160"><span class="hs-identifier hs-var">level</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><span class="hs-identifier">_</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679191229"><span class="annot"><span class="annottext">CryptLevel
+</span><a href="#local-6989586621679191229"><span class="hs-identifier hs-var">level</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">ByteString
 </span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO (Hash, Cipher, CryptLevel, ByteString)
 </span><a href="Network.TLS.Handshake.State13.html#getTxState"><span class="hs-identifier hs-var">getTxState</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191159"><span class="hs-identifier hs-var">ctx</span></a></span><span>
+</span><a href="#local-6989586621679191228"><span class="hs-identifier hs-var">ctx</span></a></span><span>
 </span><span id="line-160"></span><span>    </span><span class="annot"><span class="annottext">CryptLevel -&gt; IO CryptLevel
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">CryptLevel
-</span><a href="#local-6989586621679191160"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><a href="#local-6989586621679191229"><span class="hs-identifier hs-var">level</span></a></span><span>
 </span><span id="line-161"></span><span>
 </span><span id="line-162"></span><span class="annot"><a href="Network.TLS.QUIC.html#getRxLevel"><span class="hs-identifier hs-type">getRxLevel</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Network.TLS.Context.Internal.html#Context"><span class="hs-identifier hs-type">Context</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="Network.TLS.Record.State.html#CryptLevel"><span class="hs-identifier hs-type">CryptLevel</span></a></span><span>
 </span><span id="line-163"></span><span id="getRxLevel"><span class="annot"><span class="annottext">getRxLevel :: Context -&gt; IO CryptLevel
-</span><a href="Network.TLS.QUIC.html#getRxLevel"><span class="hs-identifier hs-var hs-var">getRxLevel</span></a></span></span><span> </span><span id="local-6989586621679191163"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191163"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="Network.TLS.QUIC.html#getRxLevel"><span class="hs-identifier hs-var hs-var">getRxLevel</span></a></span></span><span> </span><span id="local-6989586621679191232"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191232"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-164"></span><span>    </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Hash
 </span><span class="hs-identifier">_</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Cipher
-</span><span class="hs-identifier">_</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679191164"><span class="annot"><span class="annottext">CryptLevel
-</span><a href="#local-6989586621679191164"><span class="hs-identifier hs-var">level</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><span class="hs-identifier">_</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679191233"><span class="annot"><span class="annottext">CryptLevel
+</span><a href="#local-6989586621679191233"><span class="hs-identifier hs-var">level</span></a></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">ByteString
 </span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO (Hash, Cipher, CryptLevel, ByteString)
 </span><a href="Network.TLS.Handshake.State13.html#getRxState"><span class="hs-identifier hs-var">getRxState</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191163"><span class="hs-identifier hs-var">ctx</span></a></span><span>
+</span><a href="#local-6989586621679191232"><span class="hs-identifier hs-var">ctx</span></a></span><span>
 </span><span id="line-165"></span><span>    </span><span class="annot"><span class="annottext">CryptLevel -&gt; IO CryptLevel
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">CryptLevel
-</span><a href="#local-6989586621679191164"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><a href="#local-6989586621679191233"><span class="hs-identifier hs-var">level</span></a></span><span>
 </span><span id="line-166"></span><span>
 </span><span id="line-167"></span><span class="annot"><a href="Network.TLS.QUIC.html#newRecordLayer"><span class="hs-identifier hs-type">newRecordLayer</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Network.TLS.Context.Internal.html#Context"><span class="hs-identifier hs-type">Context</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Network.TLS.QUIC.html#QUICCallbacks"><span class="hs-identifier hs-type">QUICCallbacks</span></a></span><span>
 </span><span id="line-168"></span><span>               </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Network.TLS.Record.Layer.html#RecordLayer"><span class="hs-identifier hs-type">RecordLayer</span></a></span><span> </span><span class="hs-special">[</span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Record.State.html#CryptLevel"><span class="hs-identifier hs-type">CryptLevel</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span class="hs-special">)</span><span class="hs-special">]</span><span>
 </span><span id="line-169"></span><span id="newRecordLayer"><span class="annot"><span class="annottext">newRecordLayer :: Context -&gt; QUICCallbacks -&gt; RecordLayer [(CryptLevel, ByteString)]
-</span><a href="Network.TLS.QUIC.html#newRecordLayer"><span class="hs-identifier hs-var hs-var">newRecordLayer</span></a></span></span><span> </span><span id="local-6989586621679191167"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191167"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span id="local-6989586621679191168"><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191168"><span class="hs-identifier hs-var">callbacks</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO CryptLevel
+</span><a href="Network.TLS.QUIC.html#newRecordLayer"><span class="hs-identifier hs-var hs-var">newRecordLayer</span></a></span></span><span> </span><span id="local-6989586621679191236"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191236"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span id="local-6989586621679191237"><span class="annot"><span class="annottext">QUICCallbacks
+</span><a href="#local-6989586621679191237"><span class="hs-identifier hs-var">callbacks</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO CryptLevel
 -&gt; ([(CryptLevel, ByteString)] -&gt; IO ())
 -&gt; IO (Either TLSError ByteString)
 -&gt; RecordLayer [(CryptLevel, ByteString)]
@@ -229,54 +229,54 @@ IO ann
 -&gt; IO (Either TLSError ByteString)
 -&gt; RecordLayer [(ann, ByteString)]
 </span><a href="Network.TLS.Record.Layer.html#newTransparentRecordLayer"><span class="hs-identifier hs-var">newTransparentRecordLayer</span></a></span><span> </span><span class="annot"><span class="annottext">IO CryptLevel
-</span><a href="#local-6989586621679191170"><span class="hs-identifier hs-var">get</span></a></span><span> </span><span class="annot"><span class="annottext">[(CryptLevel, ByteString)] -&gt; IO ()
-</span><a href="#local-6989586621679191171"><span class="hs-identifier hs-var">send</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Either TLSError ByteString)
-</span><a href="#local-6989586621679191172"><span class="hs-identifier hs-var">recv</span></a></span><span>
+</span><a href="#local-6989586621679191239"><span class="hs-identifier hs-var">get</span></a></span><span> </span><span class="annot"><span class="annottext">[(CryptLevel, ByteString)] -&gt; IO ()
+</span><a href="#local-6989586621679191240"><span class="hs-identifier hs-var">send</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Either TLSError ByteString)
+</span><a href="#local-6989586621679191241"><span class="hs-identifier hs-var">recv</span></a></span><span>
 </span><span id="line-170"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-171"></span><span>    </span><span id="local-6989586621679191170"><span class="annot"><span class="annottext">get :: IO CryptLevel
-</span><a href="#local-6989586621679191170"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO CryptLevel
+</span><span id="line-171"></span><span>    </span><span id="local-6989586621679191239"><span class="annot"><span class="annottext">get :: IO CryptLevel
+</span><a href="#local-6989586621679191239"><span class="hs-identifier hs-var hs-var">get</span></a></span></span><span>     </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO CryptLevel
 </span><a href="Network.TLS.QUIC.html#getTxLevel"><span class="hs-identifier hs-var">getTxLevel</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191167"><span class="hs-identifier hs-var">ctx</span></a></span><span>
-</span><span id="line-172"></span><span>    </span><span id="local-6989586621679191171"><span class="annot"><span class="annottext">send :: [(CryptLevel, ByteString)] -&gt; IO ()
-</span><a href="#local-6989586621679191171"><span class="hs-identifier hs-var hs-var">send</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; [(CryptLevel, ByteString)] -&gt; IO ()
+</span><a href="#local-6989586621679191236"><span class="hs-identifier hs-var">ctx</span></a></span><span>
+</span><span id="line-172"></span><span>    </span><span id="local-6989586621679191240"><span class="annot"><span class="annottext">send :: [(CryptLevel, ByteString)] -&gt; IO ()
+</span><a href="#local-6989586621679191240"><span class="hs-identifier hs-var hs-var">send</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; [(CryptLevel, ByteString)] -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicSend"><span class="hs-identifier hs-var">quicSend</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191168"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
-</span><span id="line-173"></span><span>    </span><span id="local-6989586621679191172"><span class="annot"><span class="annottext">recv :: IO (Either TLSError ByteString)
-</span><a href="#local-6989586621679191172"><span class="hs-identifier hs-var hs-var">recv</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO CryptLevel
+</span><a href="#local-6989586621679191237"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
+</span><span id="line-173"></span><span>    </span><span id="local-6989586621679191241"><span class="annot"><span class="annottext">recv :: IO (Either TLSError ByteString)
+</span><a href="#local-6989586621679191241"><span class="hs-identifier hs-var hs-var">recv</span></a></span></span><span>    </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO CryptLevel
 </span><a href="Network.TLS.QUIC.html#getRxLevel"><span class="hs-identifier hs-var">getRxLevel</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191167"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="annot"><span class="annottext">IO CryptLevel
+</span><a href="#local-6989586621679191236"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="annot"><span class="annottext">IO CryptLevel
 -&gt; (CryptLevel -&gt; IO (Either TLSError ByteString))
 -&gt; IO (Either TLSError ByteString)
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; CryptLevel -&gt; IO (Either TLSError ByteString)
 </span><a href="Network.TLS.QUIC.html#quicRecv"><span class="hs-identifier hs-var">quicRecv</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191168"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
+</span><a href="#local-6989586621679191237"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
 </span><span id="line-174"></span><span>
 </span><span id="line-175"></span><span class="hs-comment">-- | Start a TLS handshake thread for a QUIC client.  The client will use the</span><span>
 </span><span id="line-176"></span><span class="hs-comment">-- specified TLS parameters and call the provided callback functions to send and</span><span>
 </span><span id="line-177"></span><span class="hs-comment">-- receive handshake data.</span><span>
 </span><span id="line-178"></span><span class="annot"><a href="Network.TLS.QUIC.html#tlsQUICClient"><span class="hs-identifier hs-type">tlsQUICClient</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Network.TLS.Parameters.html#ClientParams"><span class="hs-identifier hs-type">ClientParams</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Network.TLS.QUIC.html#QUICCallbacks"><span class="hs-identifier hs-type">QUICCallbacks</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-179"></span><span id="tlsQUICClient"><span class="annot"><span class="annottext">tlsQUICClient :: ClientParams -&gt; QUICCallbacks -&gt; IO ()
-</span><a href="Network.TLS.QUIC.html#tlsQUICClient"><span class="hs-identifier hs-var hs-var">tlsQUICClient</span></a></span></span><span> </span><span id="local-6989586621679191174"><span class="annot"><span class="annottext">ClientParams
-</span><a href="#local-6989586621679191174"><span class="hs-identifier hs-var">cparams</span></a></span></span><span> </span><span id="local-6989586621679191175"><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-180"></span><span>    </span><span id="local-6989586621679191176"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191176"><span class="hs-identifier hs-var">ctx0</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Backend -&gt; ClientParams -&gt; IO Context
+</span><a href="Network.TLS.QUIC.html#tlsQUICClient"><span class="hs-identifier hs-var hs-var">tlsQUICClient</span></a></span></span><span> </span><span id="local-6989586621679191243"><span class="annot"><span class="annottext">ClientParams
+</span><a href="#local-6989586621679191243"><span class="hs-identifier hs-var">cparams</span></a></span></span><span> </span><span id="local-6989586621679191244"><span class="annot"><span class="annottext">QUICCallbacks
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-180"></span><span>    </span><span id="local-6989586621679191245"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191245"><span class="hs-identifier hs-var">ctx0</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Backend -&gt; ClientParams -&gt; IO Context
 forall (m :: * -&gt; *) backend params.
 (MonadIO m, HasBackend backend, TLSParams params) =&gt;
 backend -&gt; params -&gt; m Context
 </span><a href="Network.TLS.Context.html#contextNew"><span class="hs-identifier hs-var">contextNew</span></a></span><span> </span><span class="annot"><span class="annottext">Backend
 </span><a href="Network.TLS.QUIC.html#nullBackend"><span class="hs-identifier hs-var">nullBackend</span></a></span><span> </span><span class="annot"><span class="annottext">ClientParams
-</span><a href="#local-6989586621679191174"><span class="hs-identifier hs-var">cparams</span></a></span><span>
-</span><span id="line-181"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191179"><span class="annot"><span class="annottext">ctx1 :: Context
-</span><a href="#local-6989586621679191179"><span class="hs-identifier hs-var hs-var">ctx1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191176"><span class="hs-identifier hs-var">ctx0</span></a></span><span>
+</span><a href="#local-6989586621679191243"><span class="hs-identifier hs-var">cparams</span></a></span><span>
+</span><span id="line-181"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191248"><span class="annot"><span class="annottext">ctx1 :: Context
+</span><a href="#local-6989586621679191248"><span class="hs-identifier hs-var hs-var">ctx1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191245"><span class="hs-identifier hs-var">ctx0</span></a></span><span>
 </span><span id="line-182"></span><span>           </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">ctxHandshakeSync :: HandshakeSync
 </span><a href="Network.TLS.Context.Internal.html#ctxHandshakeSync"><span class="hs-identifier hs-var">ctxHandshakeSync</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Context -&gt; ClientState -&gt; IO ())
 -&gt; (Context -&gt; ServerState -&gt; IO ()) -&gt; HandshakeSync
 </span><a href="Network.TLS.Context.Internal.html#HandshakeSync"><span class="hs-identifier hs-var">HandshakeSync</span></a></span><span> </span><span class="annot"><span class="annottext">Context -&gt; ClientState -&gt; IO ()
-</span><a href="#local-6989586621679191182"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191251"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="annot"><span class="annottext">Context
 </span><span class="hs-identifier">_</span></span><span> </span><span class="annot"><span class="annottext">ServerState
 </span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">() -&gt; IO ()
 forall a. a -&gt; IO a
@@ -290,27 +290,27 @@ forall a. Maybe a
 </span><a href="Network.TLS.Context.Internal.html#ctxQUICMode"><span class="hs-identifier hs-var">ctxQUICMode</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
 </span><span id="line-185"></span><span>           </span><span class="hs-special">}</span><span>
-</span><span id="line-186"></span><span>        </span><span id="local-6989586621679191187"><span class="annot"><span class="annottext">rl :: RecordLayer [(CryptLevel, ByteString)]
-</span><a href="#local-6989586621679191187"><span class="hs-identifier hs-var hs-var">rl</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; QUICCallbacks -&gt; RecordLayer [(CryptLevel, ByteString)]
+</span><span id="line-186"></span><span>        </span><span id="local-6989586621679191256"><span class="annot"><span class="annottext">rl :: RecordLayer [(CryptLevel, ByteString)]
+</span><a href="#local-6989586621679191256"><span class="hs-identifier hs-var hs-var">rl</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; QUICCallbacks -&gt; RecordLayer [(CryptLevel, ByteString)]
 </span><a href="Network.TLS.QUIC.html#newRecordLayer"><span class="hs-identifier hs-var">newRecordLayer</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191188"><span class="hs-identifier hs-var">ctx2</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
-</span><span id="line-187"></span><span>        </span><span id="local-6989586621679191188"><span class="annot"><span class="annottext">ctx2 :: Context
-</span><a href="#local-6989586621679191188"><span class="hs-identifier hs-var hs-var">ctx2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RecordLayer [(CryptLevel, ByteString)] -&gt; Context -&gt; Context
+</span><a href="#local-6989586621679191257"><span class="hs-identifier hs-var">ctx2</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
+</span><span id="line-187"></span><span>        </span><span id="local-6989586621679191257"><span class="annot"><span class="annottext">ctx2 :: Context
+</span><a href="#local-6989586621679191257"><span class="hs-identifier hs-var hs-var">ctx2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RecordLayer [(CryptLevel, ByteString)] -&gt; Context -&gt; Context
 forall bytes.
 Monoid bytes =&gt;
 RecordLayer bytes -&gt; Context -&gt; Context
 </span><a href="Network.TLS.Context.Internal.html#updateRecordLayer"><span class="hs-identifier hs-var">updateRecordLayer</span></a></span><span> </span><span class="annot"><span class="annottext">RecordLayer [(CryptLevel, ByteString)]
-</span><a href="#local-6989586621679191187"><span class="hs-identifier hs-var">rl</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191179"><span class="hs-identifier hs-var">ctx1</span></a></span><span>
+</span><a href="#local-6989586621679191256"><span class="hs-identifier hs-var">rl</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191248"><span class="hs-identifier hs-var">ctx1</span></a></span><span>
 </span><span id="line-188"></span><span>    </span><span class="annot"><span class="annottext">Context -&gt; IO ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Context -&gt; m ()
 </span><a href="Network.TLS.Handshake.html#handshake"><span class="hs-identifier hs-var">handshake</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191188"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
+</span><a href="#local-6989586621679191257"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
 </span><span id="line-189"></span><span>    </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicDone"><span class="hs-identifier hs-var">quicDone</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191188"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191257"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
 </span><span id="line-190"></span><span>    </span><span class="annot"><span class="annottext">IO ByteString -&gt; IO ()
 forall (f :: * -&gt; *) a. Functor f =&gt; f a -&gt; f ()
 </span><span class="hs-identifier hs-var">void</span></span><span> </span><span class="annot"><span class="annottext">(IO ByteString -&gt; IO ()) -&gt; IO ByteString -&gt; IO ()
@@ -318,42 +318,42 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Context -&gt; IO ByteString
 forall (m :: * -&gt; *). MonadIO m =&gt; Context -&gt; m ByteString
 </span><a href="Network.TLS.Core.html#recvData"><span class="hs-identifier hs-var">recvData</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191188"><span class="hs-identifier hs-var">ctx2</span></a></span><span> </span><span class="hs-comment">-- waiting for new session tickets</span><span>
+</span><a href="#local-6989586621679191257"><span class="hs-identifier hs-var">ctx2</span></a></span><span> </span><span class="hs-comment">-- waiting for new session tickets</span><span>
 </span><span id="line-191"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-192"></span><span>    </span><span id="local-6989586621679191182"><span class="annot"><span class="annottext">sync :: Context -&gt; ClientState -&gt; IO ()
-</span><a href="#local-6989586621679191182"><span class="hs-identifier hs-var hs-var">sync</span></a></span></span><span> </span><span id="local-6989586621679191198"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191198"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendClientHello"><span class="hs-identifier hs-type">SendClientHello</span></a></span><span> </span><span id="local-6989586621679191200"><span class="annot"><span class="annottext">Maybe EarlySecretInfo
-</span><a href="#local-6989586621679191200"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-192"></span><span>    </span><span id="local-6989586621679191251"><span class="annot"><span class="annottext">sync :: Context -&gt; ClientState -&gt; IO ()
+</span><a href="#local-6989586621679191251"><span class="hs-identifier hs-var hs-var">sync</span></a></span></span><span> </span><span id="local-6989586621679191267"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191267"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendClientHello"><span class="hs-identifier hs-type">SendClientHello</span></a></span><span> </span><span id="local-6989586621679191269"><span class="annot"><span class="annottext">Maybe EarlySecretInfo
+</span><a href="#local-6989586621679191269"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-193"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; KeyScheduleEvent -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicInstallKeys"><span class="hs-identifier hs-var">quicInstallKeys</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191198"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe EarlySecretInfo -&gt; KeyScheduleEvent
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191267"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe EarlySecretInfo -&gt; KeyScheduleEvent
 </span><a href="Network.TLS.QUIC.html#InstallEarlyKeys"><span class="hs-identifier hs-var">InstallEarlyKeys</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe EarlySecretInfo
-</span><a href="#local-6989586621679191200"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-194"></span><span>    </span><span class="annot"><a href="#local-6989586621679191182"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span id="local-6989586621679191201"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191201"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#RecvServerHello"><span class="hs-identifier hs-type">RecvServerHello</span></a></span><span> </span><span id="local-6989586621679191203"><span class="annot"><span class="annottext">HandshakeSecretInfo
-</span><a href="#local-6989586621679191203"><span class="hs-identifier hs-var">handSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="#local-6989586621679191269"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-194"></span><span>    </span><span class="annot"><a href="#local-6989586621679191251"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span id="local-6989586621679191270"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191270"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#RecvServerHello"><span class="hs-identifier hs-type">RecvServerHello</span></a></span><span> </span><span id="local-6989586621679191272"><span class="annot"><span class="annottext">HandshakeSecretInfo
+</span><a href="#local-6989586621679191272"><span class="hs-identifier hs-var">handSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-195"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; KeyScheduleEvent -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicInstallKeys"><span class="hs-identifier hs-var">quicInstallKeys</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191201"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HandshakeSecretInfo -&gt; KeyScheduleEvent
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191270"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HandshakeSecretInfo -&gt; KeyScheduleEvent
 </span><a href="Network.TLS.QUIC.html#InstallHandshakeKeys"><span class="hs-identifier hs-var">InstallHandshakeKeys</span></a></span><span> </span><span class="annot"><span class="annottext">HandshakeSecretInfo
-</span><a href="#local-6989586621679191203"><span class="hs-identifier hs-var">handSecInfo</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-196"></span><span>    </span><span class="annot"><a href="#local-6989586621679191182"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span id="local-6989586621679191204"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191204"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendClientFinished"><span class="hs-identifier hs-type">SendClientFinished</span></a></span><span> </span><span id="local-6989586621679191206"><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191206"><span class="hs-identifier hs-var">exts</span></a></span></span><span> </span><span id="local-6989586621679191207"><span class="annot"><span class="annottext">ApplicationSecretInfo
-</span><a href="#local-6989586621679191207"><span class="hs-identifier hs-var">appSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-197"></span><span>        </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191208"><span class="annot"><span class="annottext">qexts :: [ExtensionRaw]
-</span><a href="#local-6989586621679191208"><span class="hs-identifier hs-var hs-var">qexts</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw] -&gt; [ExtensionRaw]
+</span><a href="#local-6989586621679191272"><span class="hs-identifier hs-var">handSecInfo</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-196"></span><span>    </span><span class="annot"><a href="#local-6989586621679191251"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span id="local-6989586621679191273"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191273"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendClientFinished"><span class="hs-identifier hs-type">SendClientFinished</span></a></span><span> </span><span id="local-6989586621679191275"><span class="annot"><span class="annottext">[ExtensionRaw]
+</span><a href="#local-6989586621679191275"><span class="hs-identifier hs-var">exts</span></a></span></span><span> </span><span id="local-6989586621679191276"><span class="annot"><span class="annottext">ApplicationSecretInfo
+</span><a href="#local-6989586621679191276"><span class="hs-identifier hs-var">appSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-197"></span><span>        </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191277"><span class="annot"><span class="annottext">qexts :: [ExtensionRaw]
+</span><a href="#local-6989586621679191277"><span class="hs-identifier hs-var hs-var">qexts</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw] -&gt; [ExtensionRaw]
 </span><a href="Network.TLS.QUIC.html#filterQTP"><span class="hs-identifier hs-var">filterQTP</span></a></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191206"><span class="hs-identifier hs-var">exts</span></a></span><span>
+</span><a href="#local-6989586621679191275"><span class="hs-identifier hs-var">exts</span></a></span><span>
 </span><span id="line-198"></span><span>        </span><span class="annot"><span class="annottext">Bool -&gt; IO () -&gt; IO ()
 forall (f :: * -&gt; *). Applicative f =&gt; Bool -&gt; f () -&gt; f ()
 </span><span class="hs-identifier hs-var">when</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[ExtensionRaw] -&gt; Bool
 forall a. [a] -&gt; Bool
 forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">null</span></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191208"><span class="hs-identifier hs-var">qexts</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; IO ()) -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621679191277"><span class="hs-identifier hs-var">qexts</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; IO ()) -&gt; IO () -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-199"></span><span>            </span><span class="annot"><span class="annottext">TLSError -&gt; IO ()
@@ -367,35 +367,35 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><a href="Network.TLS.Struct.html#MissingExtension"><span class="hs-identifier hs-var">MissingExtension</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-200"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; [ExtensionRaw] -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicNotifyExtensions"><span class="hs-identifier hs-var">quicNotifyExtensions</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191204"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191208"><span class="hs-identifier hs-var">qexts</span></a></span><span>
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191273"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
+</span><a href="#local-6989586621679191277"><span class="hs-identifier hs-var">qexts</span></a></span><span>
 </span><span id="line-201"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; KeyScheduleEvent -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicInstallKeys"><span class="hs-identifier hs-var">quicInstallKeys</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191175"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191204"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApplicationSecretInfo -&gt; KeyScheduleEvent
+</span><a href="#local-6989586621679191244"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191273"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApplicationSecretInfo -&gt; KeyScheduleEvent
 </span><a href="Network.TLS.QUIC.html#InstallApplicationKeys"><span class="hs-identifier hs-var">InstallApplicationKeys</span></a></span><span> </span><span class="annot"><span class="annottext">ApplicationSecretInfo
-</span><a href="#local-6989586621679191207"><span class="hs-identifier hs-var">appSecInfo</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621679191276"><span class="hs-identifier hs-var">appSecInfo</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-202"></span><span>
 </span><span id="line-203"></span><span class="hs-comment">-- | Start a TLS handshake thread for a QUIC server.  The server will use the</span><span>
 </span><span id="line-204"></span><span class="hs-comment">-- specified TLS parameters and call the provided callback functions to send and</span><span>
 </span><span id="line-205"></span><span class="hs-comment">-- receive handshake data.</span><span>
 </span><span id="line-206"></span><span class="annot"><a href="Network.TLS.QUIC.html#tlsQUICServer"><span class="hs-identifier hs-type">tlsQUICServer</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Network.TLS.Parameters.html#ServerParams"><span class="hs-identifier hs-type">ServerParams</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Network.TLS.QUIC.html#QUICCallbacks"><span class="hs-identifier hs-type">QUICCallbacks</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-207"></span><span id="tlsQUICServer"><span class="annot"><span class="annottext">tlsQUICServer :: ServerParams -&gt; QUICCallbacks -&gt; IO ()
-</span><a href="Network.TLS.QUIC.html#tlsQUICServer"><span class="hs-identifier hs-var hs-var">tlsQUICServer</span></a></span></span><span> </span><span id="local-6989586621679191215"><span class="annot"><span class="annottext">ServerParams
-</span><a href="#local-6989586621679191215"><span class="hs-identifier hs-var">sparams</span></a></span></span><span> </span><span id="local-6989586621679191216"><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-208"></span><span>    </span><span id="local-6989586621679191217"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191217"><span class="hs-identifier hs-var">ctx0</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Backend -&gt; ServerParams -&gt; IO Context
+</span><a href="Network.TLS.QUIC.html#tlsQUICServer"><span class="hs-identifier hs-var hs-var">tlsQUICServer</span></a></span></span><span> </span><span id="local-6989586621679191284"><span class="annot"><span class="annottext">ServerParams
+</span><a href="#local-6989586621679191284"><span class="hs-identifier hs-var">sparams</span></a></span></span><span> </span><span id="local-6989586621679191285"><span class="annot"><span class="annottext">QUICCallbacks
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-208"></span><span>    </span><span id="local-6989586621679191286"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191286"><span class="hs-identifier hs-var">ctx0</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Backend -&gt; ServerParams -&gt; IO Context
 forall (m :: * -&gt; *) backend params.
 (MonadIO m, HasBackend backend, TLSParams params) =&gt;
 backend -&gt; params -&gt; m Context
 </span><a href="Network.TLS.Context.html#contextNew"><span class="hs-identifier hs-var">contextNew</span></a></span><span> </span><span class="annot"><span class="annottext">Backend
 </span><a href="Network.TLS.QUIC.html#nullBackend"><span class="hs-identifier hs-var">nullBackend</span></a></span><span> </span><span class="annot"><span class="annottext">ServerParams
-</span><a href="#local-6989586621679191215"><span class="hs-identifier hs-var">sparams</span></a></span><span>
-</span><span id="line-209"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191219"><span class="annot"><span class="annottext">ctx1 :: Context
-</span><a href="#local-6989586621679191219"><span class="hs-identifier hs-var hs-var">ctx1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191217"><span class="hs-identifier hs-var">ctx0</span></a></span><span>
+</span><a href="#local-6989586621679191284"><span class="hs-identifier hs-var">sparams</span></a></span><span>
+</span><span id="line-209"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191288"><span class="annot"><span class="annottext">ctx1 :: Context
+</span><a href="#local-6989586621679191288"><span class="hs-identifier hs-var hs-var">ctx1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191286"><span class="hs-identifier hs-var">ctx0</span></a></span><span>
 </span><span id="line-210"></span><span>          </span><span class="hs-special">{</span><span> </span><span class="annot"><span class="annottext">ctxHandshakeSync :: HandshakeSync
 </span><a href="Network.TLS.Context.Internal.html#ctxHandshakeSync"><span class="hs-identifier hs-var">ctxHandshakeSync</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Context -&gt; ClientState -&gt; IO ())
 -&gt; (Context -&gt; ServerState -&gt; IO ()) -&gt; HandshakeSync
@@ -405,7 +405,7 @@ backend -&gt; params -&gt; m Context
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Context -&gt; ServerState -&gt; IO ()
-</span><a href="#local-6989586621679191220"><span class="hs-identifier hs-var">sync</span></a></span><span>
+</span><a href="#local-6989586621679191289"><span class="hs-identifier hs-var">sync</span></a></span><span>
 </span><span id="line-211"></span><span>          </span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">ctxFragmentSize :: Maybe Int
 </span><a href="Network.TLS.Context.Internal.html#ctxFragmentSize"><span class="hs-identifier hs-var">ctxFragmentSize</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe Int
 forall a. Maybe a
@@ -414,45 +414,45 @@ forall a. Maybe a
 </span><a href="Network.TLS.Context.Internal.html#ctxQUICMode"><span class="hs-identifier hs-var">ctxQUICMode</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span>
 </span><span id="line-213"></span><span>          </span><span class="hs-special">}</span><span>
-</span><span id="line-214"></span><span>        </span><span id="local-6989586621679191222"><span class="annot"><span class="annottext">rl :: RecordLayer [(CryptLevel, ByteString)]
-</span><a href="#local-6989586621679191222"><span class="hs-identifier hs-var hs-var">rl</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; QUICCallbacks -&gt; RecordLayer [(CryptLevel, ByteString)]
+</span><span id="line-214"></span><span>        </span><span id="local-6989586621679191291"><span class="annot"><span class="annottext">rl :: RecordLayer [(CryptLevel, ByteString)]
+</span><a href="#local-6989586621679191291"><span class="hs-identifier hs-var hs-var">rl</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Context -&gt; QUICCallbacks -&gt; RecordLayer [(CryptLevel, ByteString)]
 </span><a href="Network.TLS.QUIC.html#newRecordLayer"><span class="hs-identifier hs-var">newRecordLayer</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191223"><span class="hs-identifier hs-var">ctx2</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
-</span><span id="line-215"></span><span>        </span><span id="local-6989586621679191223"><span class="annot"><span class="annottext">ctx2 :: Context
-</span><a href="#local-6989586621679191223"><span class="hs-identifier hs-var hs-var">ctx2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RecordLayer [(CryptLevel, ByteString)] -&gt; Context -&gt; Context
+</span><a href="#local-6989586621679191292"><span class="hs-identifier hs-var">ctx2</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span><span>
+</span><span id="line-215"></span><span>        </span><span id="local-6989586621679191292"><span class="annot"><span class="annottext">ctx2 :: Context
+</span><a href="#local-6989586621679191292"><span class="hs-identifier hs-var hs-var">ctx2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RecordLayer [(CryptLevel, ByteString)] -&gt; Context -&gt; Context
 forall bytes.
 Monoid bytes =&gt;
 RecordLayer bytes -&gt; Context -&gt; Context
 </span><a href="Network.TLS.Context.Internal.html#updateRecordLayer"><span class="hs-identifier hs-var">updateRecordLayer</span></a></span><span> </span><span class="annot"><span class="annottext">RecordLayer [(CryptLevel, ByteString)]
-</span><a href="#local-6989586621679191222"><span class="hs-identifier hs-var">rl</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191219"><span class="hs-identifier hs-var">ctx1</span></a></span><span>
+</span><a href="#local-6989586621679191291"><span class="hs-identifier hs-var">rl</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191288"><span class="hs-identifier hs-var">ctx1</span></a></span><span>
 </span><span id="line-216"></span><span>    </span><span class="annot"><span class="annottext">Context -&gt; IO ()
 forall (m :: * -&gt; *). MonadIO m =&gt; Context -&gt; m ()
 </span><a href="Network.TLS.Handshake.html#handshake"><span class="hs-identifier hs-var">handshake</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191223"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
+</span><a href="#local-6989586621679191292"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
 </span><span id="line-217"></span><span>    </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicDone"><span class="hs-identifier hs-var">quicDone</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191223"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191292"><span class="hs-identifier hs-var">ctx2</span></a></span><span>
 </span><span id="line-218"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-219"></span><span>    </span><span id="local-6989586621679191220"><span class="annot"><span class="annottext">sync :: Context -&gt; ServerState -&gt; IO ()
-</span><a href="#local-6989586621679191220"><span class="hs-identifier hs-var hs-var">sync</span></a></span></span><span> </span><span id="local-6989586621679191230"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191230"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendServerHello"><span class="hs-identifier hs-type">SendServerHello</span></a></span><span> </span><span id="local-6989586621679191232"><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191232"><span class="hs-identifier hs-var">exts</span></a></span></span><span> </span><span id="local-6989586621679191233"><span class="annot"><span class="annottext">Maybe EarlySecretInfo
-</span><a href="#local-6989586621679191233"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span></span><span> </span><span id="local-6989586621679191234"><span class="annot"><span class="annottext">HandshakeSecretInfo
-</span><a href="#local-6989586621679191234"><span class="hs-identifier hs-var">handSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-220"></span><span>        </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191235"><span class="annot"><span class="annottext">qexts :: [ExtensionRaw]
-</span><a href="#local-6989586621679191235"><span class="hs-identifier hs-var hs-var">qexts</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw] -&gt; [ExtensionRaw]
+</span><span id="line-219"></span><span>    </span><span id="local-6989586621679191289"><span class="annot"><span class="annottext">sync :: Context -&gt; ServerState -&gt; IO ()
+</span><a href="#local-6989586621679191289"><span class="hs-identifier hs-var hs-var">sync</span></a></span></span><span> </span><span id="local-6989586621679191299"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191299"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendServerHello"><span class="hs-identifier hs-type">SendServerHello</span></a></span><span> </span><span id="local-6989586621679191301"><span class="annot"><span class="annottext">[ExtensionRaw]
+</span><a href="#local-6989586621679191301"><span class="hs-identifier hs-var">exts</span></a></span></span><span> </span><span id="local-6989586621679191302"><span class="annot"><span class="annottext">Maybe EarlySecretInfo
+</span><a href="#local-6989586621679191302"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span></span><span> </span><span id="local-6989586621679191303"><span class="annot"><span class="annottext">HandshakeSecretInfo
+</span><a href="#local-6989586621679191303"><span class="hs-identifier hs-var">handSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-220"></span><span>        </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679191304"><span class="annot"><span class="annottext">qexts :: [ExtensionRaw]
+</span><a href="#local-6989586621679191304"><span class="hs-identifier hs-var hs-var">qexts</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw] -&gt; [ExtensionRaw]
 </span><a href="Network.TLS.QUIC.html#filterQTP"><span class="hs-identifier hs-var">filterQTP</span></a></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191232"><span class="hs-identifier hs-var">exts</span></a></span><span>
+</span><a href="#local-6989586621679191301"><span class="hs-identifier hs-var">exts</span></a></span><span>
 </span><span id="line-221"></span><span>        </span><span class="annot"><span class="annottext">Bool -&gt; IO () -&gt; IO ()
 forall (f :: * -&gt; *). Applicative f =&gt; Bool -&gt; f () -&gt; f ()
 </span><span class="hs-identifier hs-var">when</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[ExtensionRaw] -&gt; Bool
 forall a. [a] -&gt; Bool
 forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">null</span></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191235"><span class="hs-identifier hs-var">qexts</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; IO ()) -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621679191304"><span class="hs-identifier hs-var">qexts</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(IO () -&gt; IO ()) -&gt; IO () -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-222"></span><span>            </span><span class="annot"><span class="annottext">TLSError -&gt; IO ()
@@ -466,60 +466,60 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><a href="Network.TLS.Struct.html#MissingExtension"><span class="hs-identifier hs-var">MissingExtension</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-223"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; [ExtensionRaw] -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicNotifyExtensions"><span class="hs-identifier hs-var">quicNotifyExtensions</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191230"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
-</span><a href="#local-6989586621679191235"><span class="hs-identifier hs-var">qexts</span></a></span><span>
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191299"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="annot"><span class="annottext">[ExtensionRaw]
+</span><a href="#local-6989586621679191304"><span class="hs-identifier hs-var">qexts</span></a></span><span>
 </span><span id="line-224"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; KeyScheduleEvent -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicInstallKeys"><span class="hs-identifier hs-var">quicInstallKeys</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191230"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe EarlySecretInfo -&gt; KeyScheduleEvent
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191299"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe EarlySecretInfo -&gt; KeyScheduleEvent
 </span><a href="Network.TLS.QUIC.html#InstallEarlyKeys"><span class="hs-identifier hs-var">InstallEarlyKeys</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe EarlySecretInfo
-</span><a href="#local-6989586621679191233"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621679191302"><span class="hs-identifier hs-var">mEarlySecInfo</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-225"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; KeyScheduleEvent -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicInstallKeys"><span class="hs-identifier hs-var">quicInstallKeys</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191230"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HandshakeSecretInfo -&gt; KeyScheduleEvent
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191299"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HandshakeSecretInfo -&gt; KeyScheduleEvent
 </span><a href="Network.TLS.QUIC.html#InstallHandshakeKeys"><span class="hs-identifier hs-var">InstallHandshakeKeys</span></a></span><span> </span><span class="annot"><span class="annottext">HandshakeSecretInfo
-</span><a href="#local-6989586621679191234"><span class="hs-identifier hs-var">handSecInfo</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-226"></span><span>    </span><span class="annot"><a href="#local-6989586621679191220"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span id="local-6989586621679191236"><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191236"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendServerFinished"><span class="hs-identifier hs-type">SendServerFinished</span></a></span><span> </span><span id="local-6989586621679191238"><span class="annot"><span class="annottext">ApplicationSecretInfo
-</span><a href="#local-6989586621679191238"><span class="hs-identifier hs-var">appSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="#local-6989586621679191303"><span class="hs-identifier hs-var">handSecInfo</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-226"></span><span>    </span><span class="annot"><a href="#local-6989586621679191289"><span class="hs-identifier hs-var">sync</span></a></span><span> </span><span id="local-6989586621679191305"><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191305"><span class="hs-identifier hs-var">ctx</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Handshake.Control.html#SendServerFinished"><span class="hs-identifier hs-type">SendServerFinished</span></a></span><span> </span><span id="local-6989586621679191307"><span class="annot"><span class="annottext">ApplicationSecretInfo
+</span><a href="#local-6989586621679191307"><span class="hs-identifier hs-var">appSecInfo</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-227"></span><span>        </span><span class="annot"><span class="annottext">QUICCallbacks -&gt; Context -&gt; KeyScheduleEvent -&gt; IO ()
 </span><a href="Network.TLS.QUIC.html#quicInstallKeys"><span class="hs-identifier hs-var">quicInstallKeys</span></a></span><span> </span><span class="annot"><span class="annottext">QUICCallbacks
-</span><a href="#local-6989586621679191216"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
-</span><a href="#local-6989586621679191236"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApplicationSecretInfo -&gt; KeyScheduleEvent
+</span><a href="#local-6989586621679191285"><span class="hs-identifier hs-var">callbacks</span></a></span><span> </span><span class="annot"><span class="annottext">Context
+</span><a href="#local-6989586621679191305"><span class="hs-identifier hs-var">ctx</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ApplicationSecretInfo -&gt; KeyScheduleEvent
 </span><a href="Network.TLS.QUIC.html#InstallApplicationKeys"><span class="hs-identifier hs-var">InstallApplicationKeys</span></a></span><span> </span><span class="annot"><span class="annottext">ApplicationSecretInfo
-</span><a href="#local-6989586621679191238"><span class="hs-identifier hs-var">appSecInfo</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621679191307"><span class="hs-identifier hs-var">appSecInfo</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-228"></span><span>
 </span><span id="line-229"></span><span class="annot"><a href="Network.TLS.QUIC.html#filterQTP"><span class="hs-identifier hs-type">filterQTP</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Network.TLS.Struct.html#ExtensionRaw"><span class="hs-identifier hs-type">ExtensionRaw</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Network.TLS.Struct.html#ExtensionRaw"><span class="hs-identifier hs-type">ExtensionRaw</span></a></span><span class="hs-special">]</span><span>
 </span><span id="line-230"></span><span id="filterQTP"><span class="annot"><span class="annottext">filterQTP :: [ExtensionRaw] -&gt; [ExtensionRaw]
 </span><a href="Network.TLS.QUIC.html#filterQTP"><span class="hs-identifier hs-var hs-var">filterQTP</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(ExtensionRaw -&gt; Bool) -&gt; [ExtensionRaw] -&gt; [ExtensionRaw]
 forall a. (a -&gt; Bool) -&gt; [a] -&gt; [a]
-</span><span class="hs-identifier hs-var">filter</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Struct.html#ExtensionRaw"><span class="hs-identifier hs-type">ExtensionRaw</span></a></span><span> </span><span id="local-6989586621679191240"><span class="annot"><span class="annottext">ExtensionID
-</span><a href="#local-6989586621679191240"><span class="hs-identifier hs-var">eid</span></a></span></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><span class="hs-identifier hs-var">filter</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-special">(</span><span class="annot"><a href="Network.TLS.Struct.html#ExtensionRaw"><span class="hs-identifier hs-type">ExtensionRaw</span></a></span><span> </span><span id="local-6989586621679191309"><span class="annot"><span class="annottext">ExtensionID
+</span><a href="#local-6989586621679191309"><span class="hs-identifier hs-var">eid</span></a></span></span><span> </span><span class="annot"><span class="annottext">ByteString
 </span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">ExtensionID
-</span><a href="#local-6989586621679191240"><span class="hs-identifier hs-var">eid</span></a></span><span> </span><span class="annot"><span class="annottext">ExtensionID -&gt; ExtensionID -&gt; Bool
+</span><a href="#local-6989586621679191309"><span class="hs-identifier hs-var">eid</span></a></span><span> </span><span class="annot"><span class="annottext">ExtensionID -&gt; ExtensionID -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">ExtensionID
 </span><a href="Network.TLS.Extension.html#extensionID_QuicTransportParameters"><span class="hs-identifier hs-var">extensionID_QuicTransportParameters</span></a></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">ExtensionID
-</span><a href="#local-6989586621679191240"><span class="hs-identifier hs-var">eid</span></a></span><span> </span><span class="annot"><span class="annottext">ExtensionID -&gt; ExtensionID -&gt; Bool
+</span><a href="#local-6989586621679191309"><span class="hs-identifier hs-var">eid</span></a></span><span> </span><span class="annot"><span class="annottext">ExtensionID -&gt; ExtensionID -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">ExtensionID
 </span><span class="hs-number">0xffa5</span></span><span class="hs-special">)</span><span> </span><span class="hs-comment">-- to be deleted</span><span>
 </span><span id="line-231"></span><span>
 </span><span id="line-232"></span><span class="hs-comment">-- | Can be used by callbacks to signal an unexpected condition.  This will then</span><span>
 </span><span id="line-233"></span><span class="hs-comment">-- generate an &quot;internal_error&quot; alert in the TLS stack.</span><span>
-</span><span id="line-234"></span><span id="local-6989586621679191065"><span class="annot"><a href="Network.TLS.QUIC.html#errorTLS"><span class="hs-identifier hs-type">errorTLS</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621679191065"><span class="hs-identifier hs-type">a</span></a></span></span><span>
+</span><span id="line-234"></span><span id="local-6989586621679191134"><span class="annot"><a href="Network.TLS.QUIC.html#errorTLS"><span class="hs-identifier hs-type">errorTLS</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621679191134"><span class="hs-identifier hs-type">a</span></a></span></span><span>
 </span><span id="line-235"></span><span id="errorTLS"><span class="annot"><span class="annottext">errorTLS :: forall a. String -&gt; IO a
-</span><a href="Network.TLS.QUIC.html#errorTLS"><span class="hs-identifier hs-var hs-var">errorTLS</span></a></span></span><span> </span><span id="local-6989586621679191243"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621679191243"><span class="hs-identifier hs-var">msg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">TLSError -&gt; IO a
+</span><a href="Network.TLS.QUIC.html#errorTLS"><span class="hs-identifier hs-var hs-var">errorTLS</span></a></span></span><span> </span><span id="local-6989586621679191312"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679191312"><span class="hs-identifier hs-var">msg</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">TLSError -&gt; IO a
 forall (m :: * -&gt; *) a. MonadIO m =&gt; TLSError -&gt; m a
 </span><a href="Network.TLS.Context.Internal.html#throwCore"><span class="hs-identifier hs-var">throwCore</span></a></span><span> </span><span class="annot"><span class="annottext">(TLSError -&gt; IO a) -&gt; TLSError -&gt; IO a
 forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">(String, Bool, AlertDescription) -&gt; TLSError
 </span><a href="Network.TLS.Struct.html#Error_Protocol"><span class="hs-identifier hs-var">Error_Protocol</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621679191243"><span class="hs-identifier hs-var">msg</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679191312"><span class="hs-identifier hs-var">msg</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">True</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">AlertDescription
 </span><a href="Network.TLS.Struct.html#InternalError"><span class="hs-identifier hs-var">InternalError</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-236"></span><span>

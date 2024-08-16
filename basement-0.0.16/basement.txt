@@ -1641,8 +1641,27 @@ fromListN :: IsList l => Int -> [Item l] -> l
 --   structure <tt>l</tt>. It should satisfy fromList . toList = id.
 toList :: IsList l => l -> [Item l]
 
--- | Class for string-like datastructures; used by the overloaded string
---   extension (-XOverloadedStrings in GHC).
+-- | <a>IsString</a> is used in combination with the
+--   <tt>-XOverloadedStrings</tt> language extension to convert the
+--   literals to different string types.
+--   
+--   For example, if you use the <a>text</a> package, you can say
+--   
+--   <pre>
+--   {-# LANGUAGE OverloadedStrings  #-}
+--   
+--   myText = "hello world" :: Text
+--   </pre>
+--   
+--   Internally, the extension will convert this to the equivalent of
+--   
+--   <pre>
+--   myText = fromString @Text ("hello world" :: String)
+--   </pre>
+--   
+--   <b>Note:</b> You can use <tt>fromString</tt> in normal code as well,
+--   but the usual performance/memory efficiency problems with
+--   <a>String</a> apply.
 class () => IsString a
 fromString :: IsString a => String -> a
 
@@ -5996,8 +6015,27 @@ fromListN :: IsList l => Int -> [Item l] -> l
 --   structure <tt>l</tt>. It should satisfy fromList . toList = id.
 toList :: IsList l => l -> [Item l]
 
--- | Class for string-like datastructures; used by the overloaded string
---   extension (-XOverloadedStrings in GHC).
+-- | <a>IsString</a> is used in combination with the
+--   <tt>-XOverloadedStrings</tt> language extension to convert the
+--   literals to different string types.
+--   
+--   For example, if you use the <a>text</a> package, you can say
+--   
+--   <pre>
+--   {-# LANGUAGE OverloadedStrings  #-}
+--   
+--   myText = "hello world" :: Text
+--   </pre>
+--   
+--   Internally, the extension will convert this to the equivalent of
+--   
+--   <pre>
+--   myText = fromString @Text ("hello world" :: String)
+--   </pre>
+--   
+--   <b>Note:</b> You can use <tt>fromString</tt> in normal code as well,
+--   but the usual performance/memory efficiency problems with
+--   <a>String</a> apply.
 class () => IsString a
 fromString :: IsString a => String -> a
 
